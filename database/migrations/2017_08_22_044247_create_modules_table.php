@@ -19,6 +19,7 @@ class CreateModulesTable extends Migration
             $table->string('linksrc');
             $table->boolean('status');
             $table->integer('sort');
+            $table->string('icon');
             $table->timestamps();
         });
     }

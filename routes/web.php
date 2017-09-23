@@ -11,9 +11,36 @@
 |
 */
 
-Route::get('/', 'Controller@admin');
 
-/* for admin panel */
+/* --------------------- For Authentication ------------------------- */
+Auth::routes();
+Route::get('/home', 'Controller@welcome');
 
-Route::resource('admin/menu', 'MenuController');
-Route::resource('admin/module', 'ModuleController');
+
+/* --------------------- For Admin Panel ---------------------------- */
+
+Route::group(['middleware' => 'auth'], function() {
+
+	Route::get('/admin', 'Controller@admin');
+  	Route::resource('admin/menu', 'MenuController');
+	Route::resource('admin/module', 'ModuleController');
+
+	
+	/* --------------------- For JSON Datas------------------------- */
+
+	Route::get('/getModules', 'ModuleController@ListModule');
+
+	Route::get('/allMenu', 'MenuController@AllMenu');
+
+});
+
+
+/* --------------------- For Web ---------------------------- */
+
+Route::get('/', 'Controller@welcome');
+
+
+
+
+
+

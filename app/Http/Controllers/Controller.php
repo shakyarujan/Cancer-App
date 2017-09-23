@@ -15,4 +15,8 @@ class Controller extends BaseController
     public function admin(){
     	return view('admin.admin');
     }
+
+    public function welcome(){
+    	return view('web.welcome');
+    }
 }

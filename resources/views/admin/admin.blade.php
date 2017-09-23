@@ -1,68 +1,29 @@
 @extends('admin/includes/adminMaster')
 
 @section('content')
+
+<script>
+    $(document).ready(function() {
+        $.ajax({
+          dataType: "json",
+          url: "/getModules",
+          type: 'GET',
+          
+           success: function(data){
+            for(var index in data) {
+              if((parseInt(index)+1)%2==0){color = "bg-red"} else if((parseInt(index)+1)%3==0){color = "bg-green"} else if((parseInt(index)+1)%4==0){color = "bg-yellow"} else{color = "bg-aqua"}
+              $("#moduleBox").append('<div class="col-lg-3 col-xs-6"><div class="small-box '+color+'"><div class="inner"><h3>'+ data[index].name +'</h3><p>Section</p></div><div class="icon"><i class="'+ data[index].icon +'"></i></div><a href="'+ data[index].linksrc +'" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a></div></div>'); 
+            }          
+           }
+        });
+        return false;
+      });
+</script>
+
 <!-- Small boxes (Stat box) -->
-<div class="row">
-  <div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-aqua">
-      <div class="inner">
-        <h3>150</h3>
+<div class="row" id="moduleBox">
 
-        <p>New Orders</p>
-      </div>
-      <div class="icon">
-        <i class="ion ion-bag"></i>
-      </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-    </div>
-  </div>
-  <!-- ./col -->
-  <div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-green">
-      <div class="inner">
-        <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-        <p>Bounce Rate</p>
-      </div>
-      <div class="icon">
-        <i class="ion ion-stats-bars"></i>
-      </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-    </div>
-  </div>
-  <!-- ./col -->
-  <div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-yellow">
-      <div class="inner">
-        <h3>44</h3>
-
-        <p>User Registrations</p>
-      </div>
-      <div class="icon">
-        <i class="ion ion-person-add"></i>
-      </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-    </div>
-  </div>
-  <!-- ./col -->
-  <div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-red">
-      <div class="inner">
-        <h3>65</h3>
-
-        <p>Unique Visitors</p>
-      </div>
-      <div class="icon">
-        <i class="ion ion-pie-graph"></i>
-      </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-    </div>
-  </div>
-  <!-- ./col -->
+    
 </div>
 <!-- /.row -->
 

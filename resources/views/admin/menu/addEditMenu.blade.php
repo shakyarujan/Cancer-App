@@ -5,10 +5,14 @@
    		$action = '/admin/menu/'.$id;
    		$nameVal = $editMenu["name"];
    		$linkVal = $editMenu["linksrc"];
+   		$headchecked = ($editMenu["type"]==1)?'checked="checked"':'';
+   		$footchecked = ($editMenu["type"]==0)?'checked="checked"':'';
     }
     else{
     	$action = '/admin/menu';
     	$nameVal = $linkVal ='';
+    	$headchecked = 'checked="checked"';
+    	$footchecked = '';
     }
 @endphp
 
@@ -40,10 +44,10 @@
 		<div class="form-group row">
 	      <label for="type" class="col-sm-2 col-form-label col-form-label-sm">Menu Type</label>
 	      <div class="col-sm-2">
-	      	<input type="radio" class="flat-red" checked="checked" name="type" id="top" value="1">Header Menu
+	      	<input type="radio" class="flat-red" {{$headchecked}} name="type" id="top" value="1">Header Menu
 	      </div>
 	      <div class="col-sm-2">
-	      	<input type="radio" class="flat-red" name="type" id="bottom" value="1">Footer Menu
+	      	<input type="radio" class="flat-red" {{$footchecked}} name="type" id="bottom" value="0">Footer Menu
 		  </div>
 	    </div>
 
@@ -53,4 +57,10 @@
 	    </div>
 	  </form>
 	</div>
+	
+	<div class="app"></div>
+
+	<button onclick="listMenu()">aaaa</button>
+
+	<script src="{!! asset('ajax/menu.js')!!}"></script>
 @endsection

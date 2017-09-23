@@ -3,11 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Menu;
 
 class MenuController extends Controller
 {
+    /**
+ * Create a new controller instance.
+ *
+ * @return void
+ */
+    public function __construct()
+    {
+        // if(! Auth::user()){echo "not logged in"; exit();}
+        
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -105,4 +117,16 @@ class MenuController extends Controller
 
         return redirect('/admin/menu');
     }
+
+
+    /*----------------------------------- AJAX Controller ---------------------------*/
+
+    public function AllMenu()
+    {
+        echo $_GET["type"];
+        $menuList = Menu::all();
+        return response()->json($menuList);
+        
+    }
+        
 }

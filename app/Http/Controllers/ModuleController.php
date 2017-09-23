@@ -48,7 +48,7 @@ class ModuleController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -83,5 +83,18 @@ class ModuleController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+
+    /*------------------------------ AJAX Controllers --------------------------------*/
+
+    /**
+     * Return module.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function ListModule(){
+        $moduleList = Module::all();
+        return response()->json($moduleList);
     }
 }
