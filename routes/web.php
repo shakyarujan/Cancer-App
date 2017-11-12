@@ -24,13 +24,14 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/admin', 'Controller@admin');
   	Route::resource('admin/menu', 'MenuController');
 	Route::resource('admin/module', 'ModuleController');
+	Route::resource('admin/article', 'ArticleController');
 
 	
-	/* --------------------- For JSON Datas------------------------- */
+	/* --------------------- For AJAX Datas------------------------- */
 
 	Route::get('/getModules', 'ModuleController@ListModule');
-
-	Route::get('/allMenu', 'MenuController@AllMenu');
+	Route::get('/allMenu', 'MenuController@AllMenuAction');
+	Route::get('/ajaxArticle', 'ArticleController@ajaxArticle');
 
 });
 

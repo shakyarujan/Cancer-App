@@ -33,6 +33,10 @@
   <!-- jQuery 2.2.3 -->
 <script src="{!! asset('plugins/jQuery/jquery-2.2.3.min.js') !!}"></script>
 
+<!-- tinymce -->
+<script src="{{url('tinymce/jquery.tinymce.min.js')}}"></script>
+<script src="{{url('tinymce/tinymce.min.js')}}"></script>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -45,11 +49,11 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="/admin" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>U</b>Cms</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Univ</b>CMS</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -65,13 +69,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   {{ Auth::user()->name }}
@@ -153,15 +157,37 @@
 </div>
 <!-- ./wrapper -->
 
+<!-- tinymce init -->
+<script>
+    tinymce.init({
+      selector: "textarea",theme: "modern", height: 250,
+      plugins: [
+      "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+      "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+      "table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
+      ],
+      toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+      toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
+      image_advtab: true ,
+      
+      external_filemanager_path:"{{url('tinymce/filemanager')}}/",
+      filemanager_title:"Responsive Filemanager" ,
+      external_plugins: { "filemanager" : "{{url('tinymce')}}/filemanager/plugin.min.js"}
+    });
+</script>
+
+<!-- till here -->
+
 
 <!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="{!! asset('plugins/jQueryUI/jquery-ui.min.js') !!}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{!! asset('bootstrap/js/bootstrap.min.js') !!}"></script>
+<script src="{!! asset('ajax/module.js') !!}"></script>
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="{!! asset('plugins/morris/morris.min.js') !!}"></script>
@@ -185,7 +211,6 @@
 <script src="{!! asset('plugins/fastclick/fastclick.js') !!}"></script>
 <!-- AdminLTE App -->
 <script src="{!! asset('dist/js/app.min.js') !!}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{!! asset('dist/js/pages/dashboard.js') !!}"></script>
+
 </body>
 </html>

@@ -53,8 +53,9 @@ class MenuController extends Controller
         $menu = new Menu([
           'name' => $request->get('name'),
           'linksrc' => $request->get('link'),
+          'parentOf' => $request->get('parent'),
           'type' => $request->get('type'),
-          'sort' =>'1'
+          'status' => $request->get('status'),
         ]);
 
         $menu->save();
@@ -99,6 +100,8 @@ class MenuController extends Controller
         $editMenu->name = $request->get('name');
         $editMenu->linksrc = $request->get('link');
         $editMenu->type = $request->get('type');
+        $editMenu->parentOf = $request->get('parent');
+        $editMenu->status = $request->get('status');
 
         $editMenu->save();
         return redirect('/admin/menu');
@@ -121,12 +124,14 @@ class MenuController extends Controller
 
     /*----------------------------------- AJAX Controller ---------------------------*/
 
-    public function AllMenu()
+    public function AllMenuAction()
     {
-        echo $_GET["type"];
-        $menuList = Menu::all();
-        return response()->json($menuList);
-        
+        $request = $_REQUEST['type'];
+
+        if($request == "getMenu"){
+            $menuList = Menu::all();
+            return response()->json($menuList);
+        }
     }
         
 }

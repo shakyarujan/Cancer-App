@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+	<div class="col-md-11 text-right">
+	<a href="menu/create" class="btn btn-primary btn-sm">Add Menu</a>
+	</div>
 	<div class="col-md-11">
 	<table class="table table-striped">
 		<tr class="danger">
@@ -23,7 +26,7 @@
 			<td class="col-sm-6 col-md-6"> {{$menus['linksrc']}} </td>
 			<td class="col-sm-3 col-md-3"> @php echo $statusBtn @endphp | <a href="{{action('MenuController@edit', $menus['id'])}}">Edit</a> | 
 				<form action="{{action('MenuController@destroy', $menus['id'])}}" method="post">
-	            {{csrf_field()}}
+	            {{ csrf_field() }}
 	            {{ method_field('delete') }}
 	            <a href="javascript:$('form').submit();" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
 	            </form>
