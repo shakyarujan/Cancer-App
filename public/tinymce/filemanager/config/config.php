@@ -75,7 +75,7 @@ $config = array(
 	| with start and final /
 	|
 	*/
-	'upload_dir' => getenv('APP_ROOT_PATH').'/public/tinymce/source/',
+	'upload_dir' => getenv('APP_ROOT_PATH').'/tinymce/source/',
 	/*
 	|--------------------------------------------------------------------------
 	| relative path from filemanager folder to upload folder

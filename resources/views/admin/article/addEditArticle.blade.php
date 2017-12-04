@@ -67,7 +67,7 @@
 		<div class="form-group row">
 	      <label for="link" class="col-sm-2 col-form-label col-form-label-sm">Content</label>
 	      <div class="col-sm-8">
-	      	<textarea class="form-control form-control-lg" id="content" placeholder="content" name="content"required="required">{{$contentVal}}</textarea>
+	      	<textarea class="form-control form-control-lg tiny-text" id="content" placeholder="content" name="content"required="required">{{$contentVal}}</textarea>
 		  </div>
 		</div>
 

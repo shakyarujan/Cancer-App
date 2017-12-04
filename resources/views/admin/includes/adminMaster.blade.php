@@ -160,7 +160,7 @@
 <!-- tinymce init -->
 <script>
     tinymce.init({
-      selector: "textarea",theme: "modern", height: 250,
+      selector: ".tiny-text",theme: "modern", height: 250,
       plugins: [
       "advlist autolink link image lists charmap print preview hr anchor pagebreak",
       "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",

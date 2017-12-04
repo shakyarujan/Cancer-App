@@ -15,6 +15,13 @@
 /* --------------------- For Authentication ------------------------- */
 Auth::routes();
 Route::get('/home', 'Controller@welcome');
+Route::get('article/{slug}','Controller@article');
+Route::get('/news/{slug}', 'Controller@news');
+Route::get('/events/{slug}', 'Controller@event');
+Route::get('/gallery/{slug}', 'Controller@gallery');
+Route::get('/gallery', 'Controller@galleries');
+Route::get('/contact', 'Controller@contact');
+
 
 
 /* --------------------- For Admin Panel ---------------------------- */
@@ -25,6 +32,9 @@ Route::group(['middleware' => 'auth'], function() {
   	Route::resource('admin/menu', 'MenuController');
 	Route::resource('admin/module', 'ModuleController');
 	Route::resource('admin/article', 'ArticleController');
+	Route::resource('admin/news', 'NewsController');
+	Route::resource('admin/events', 'EventController');
+	Route::resource('admin/gallery', 'GalleryController');
 
 	
 	/* --------------------- For AJAX Datas------------------------- */
